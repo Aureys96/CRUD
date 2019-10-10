@@ -47,6 +47,8 @@ public class DBService implements DBServiceInt {
         Transaction transaction = session.beginTransaction();
         ProfileDAO dao = new ProfileDAO(session);
         long id = dao.CreateProfile(name,password,email);
+        transaction.commit();
+        session.close();
         return id;
     }
     @Override

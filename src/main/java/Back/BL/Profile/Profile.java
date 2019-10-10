@@ -4,6 +4,10 @@ import javax.persistence.*;
 @Entity
 @Table(name="profiles")
 public class Profile {
+    @SuppressWarnings("UnusedDeclaration")
+    public Profile(){
+
+    }
     public Profile(String name, String password, String email){
         this.name = name;
         this.password = password;
@@ -43,6 +47,7 @@ public class Profile {
         this.email = s;
     }
 
+    public void setId(long id) {this.id = id;}
     @Override
     public String toString() {
         return "Profile {name: " + name + " id= " + id +" e-mail: "+ email +'\''+'}';
