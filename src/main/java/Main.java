@@ -1,20 +1,24 @@
 import Back.DataBase.DBService;
 import Back.DataBase.DBServiceInt;
-import Back.BL.Profile.Profile;
+import Servlets.SignUpServlet;
+import org.eclipse.jetty.server.*;
+import org.eclipse.jetty.server.handler.*;
+import org.eclipse.jetty.servlet.*;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         DBServiceInt db = new DBService();
         db.printConnectInfo();
-        try {
-            long userId = db.addProfile("Aureys","1234","fox@gmail.com");
-            System.out.println("Added user id: " + userId);
-            long userId2 = db.addProfile("Aureys2","1234","fox2@gmail.com");
-            System.out.println("Added user id: " + userId2);
-            Profile profile = db.getProfile(userId);
-            System.out.println("User profile: " + profile);
+        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+        context.addServlet(new ServletHolder(new SignUpServlet(db)), "/SignUp");
+        ResourceHandler resource_handler = new ResourceHandler();
+        resource_handler.setResourceBase("src\\main\\resources");
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        HandlerList handlers = new HandlerList();
+        handlers.setHandlers(new Handler[]{resource_handler, context});
+        Server server = new Server(8080);
+        server.setHandler(handlers);
+        server.start();
+        server.join();
     }
 }

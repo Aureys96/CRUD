@@ -12,6 +12,7 @@ public class Profile {
         this.name = name;
         this.password = password;
         this.email = email;
+        this.image = "Default Profile Pic";
     }
     @Column (name="name", unique = true, updatable = true)
    private String name;
