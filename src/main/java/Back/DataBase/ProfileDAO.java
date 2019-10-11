@@ -31,6 +31,10 @@ public class ProfileDAO {
         Profile profile = this.get(id);
         return profile.getImage();
     }
+    public String getPass(long id) throws HibernateException{
+        String password = this.get(id).getPass();
+        return password;
+    }
     public long CreateProfile(String name, String password, String email) throws HibernateException{
         Profile profile = new Profile(name,password,email);
         return (long)session.save(profile);

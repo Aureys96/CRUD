@@ -1,6 +1,7 @@
 import Back.DataBase.DBService;
 import Back.DataBase.DBServiceInt;
-import Servlets.SignUpServlet;
+
+import Servlets.*;
 import org.eclipse.jetty.server.*;
 import org.eclipse.jetty.server.handler.*;
 import org.eclipse.jetty.servlet.*;
@@ -11,6 +12,7 @@ public class Main {
         db.printConnectInfo();
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.addServlet(new ServletHolder(new SignUpServlet(db)), "/SignUp");
+        context.addServlet(new ServletHolder(new SignInServlet(db)), "/SignIn");
         ResourceHandler resource_handler = new ResourceHandler();
         resource_handler.setResourceBase("src\\main\\resources");
 

@@ -17,5 +17,8 @@ public class SignUpServlet extends HttpServlet {
             throws ServletException, IOException
     {
         db.addProfile(request.getParameter("login"), request.getParameter("password"),request.getParameter("email"));
+        response.setContentType("application/json; charset=utf-8");
+        response.setStatus(HttpServletResponse.SC_OK);
+        response.getWriter().println("Registration complete: " + request.getParameter("login"));
     }
 }

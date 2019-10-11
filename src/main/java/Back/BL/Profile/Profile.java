@@ -39,7 +39,9 @@ public class Profile {
     public String getImage(){
         return image;
     }
-
+    public String getPass(){
+        return password;
+    }
     public void setName(String s) {
         this.name = s;
     }

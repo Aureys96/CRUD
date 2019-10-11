@@ -62,6 +62,18 @@ public class DBService implements DBServiceInt {
         });
         session.close();
     }
+
+    @Override
+    public boolean isValid(String name, String password) {
+        Session session = sessionFactory.openSession();
+        ProfileDAO dao = new ProfileDAO(session);
+        long id = dao.getId(name);
+        if(name.equals(dao.get(id).getName())&&password.equals(dao.get(id).getPass()))
+            return true;
+        else
+            return false;
+    }
+
     private static SessionFactory createSessionFactory(Configuration configuration){
         StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder();
         builder.applySettings(configuration.getProperties());
