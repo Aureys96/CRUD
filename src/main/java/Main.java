@@ -22,7 +22,7 @@ public class Main {
         Server server = new Server(8080);
         server.setHandler(handlers);
         //db.addProfile("admin","admin","admin");
-      //  db.delete("admin");
+        //db.updateName("ADMENEZ","admin");
         server.start();
         server.join();
 

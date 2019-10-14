@@ -47,4 +47,14 @@ public class ProfileDAO {
             System.out.println("Profile deleted");
         }
     }
+    public void UpdateName(String newName, String oldName) throws HibernateException{
+        long id = getId(oldName);
+        Profile profile = session.get(Profile.class,id);
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaUpdate<Profile> criteria = builder.createCriteriaUpdate(Profile.class);
+        Root<Profile> root = criteria.from(Profile.class);
+        criteria.set(root.get("name"), newName);
+        criteria.where(builder.equal(root.get("id"), id));
+        session.createQuery(criteria).executeUpdate();
+    }
 }

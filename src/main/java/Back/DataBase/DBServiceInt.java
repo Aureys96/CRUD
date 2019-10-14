@@ -9,4 +9,5 @@ public interface DBServiceInt {
     boolean isValid(String name, String password);
     Profile getProfileByName(String name);
     void delete(String name);
+    void updateName(String newName, String oldName);
 }

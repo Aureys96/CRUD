@@ -105,4 +105,20 @@ public class DBService implements DBServiceInt {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void updateName(String newName, String oldName) {
+        Transaction transaction = null;
+        try (Session session = sessionFactory.openSession()){
+            transaction=session.getTransaction();
+            transaction.begin();
+            ProfileDAO dao = new ProfileDAO(session);
+            dao.UpdateName(newName,oldName);
+            transaction.commit();
+        }
+        catch(Exception e){
+            if(transaction!=null){transaction.rollback();}
+            e.printStackTrace();
+        }
+    }
 }

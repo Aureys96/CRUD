@@ -21,9 +21,18 @@ public class ProfileServlet extends HttpServlet {
         }
     }
     @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String Profile = request.getParameter("ProfileToUpdate");
+        String newProfileName = request.getParameter("NewProfile");
+        db.updateName(newProfileName,Profile);
+        response.getWriter().println("Profile "+Profile+" is updated to new name: "+newProfileName);
+
+    }
+    @Override
     public void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String Profile = request.getParameter("Profile");
         db.delete(Profile);
         response.getWriter().println("Profile "+'"'+Profile+"'"+" was deleted");
     }
+
 }
