@@ -13,6 +13,7 @@ public class Main {
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.addServlet(new ServletHolder(new SignUpServlet(db)), "/SignUp");
         context.addServlet(new ServletHolder(new SignInServlet(db)), "/SignIn");
+        context.addServlet(new ServletHolder(new ProfileServlet(db)), "/Profile");
         ResourceHandler resource_handler = new ResourceHandler();
         resource_handler.setResourceBase("src\\main\\resources");
 

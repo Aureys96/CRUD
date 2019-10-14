@@ -53,6 +53,6 @@ public class Profile {
     public void setId(long id) {this.id = id;}
     @Override
     public String toString() {
-        return "Profile {name: " + name + " id= " + id +" e-mail: "+ email +'\''+'}';
+        return "Profile {name: " + name + " id: " + id +" e-mail: "+ email +'\''+'}';
     }
 }

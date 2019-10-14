@@ -7,4 +7,5 @@ public interface DBServiceInt {
     long addProfile(String name, String password, String email);
     void printConnectInfo();
     boolean isValid(String name, String password);
+    Profile getProfileByName(String name);
 }

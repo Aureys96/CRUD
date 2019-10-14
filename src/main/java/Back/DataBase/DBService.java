@@ -80,4 +80,12 @@ public class DBService implements DBServiceInt {
         ServiceRegistry serviceRegistry = builder.build();
         return configuration.buildSessionFactory(serviceRegistry);
     }
+    public Profile getProfileByName(String name){
+        Session session = sessionFactory.openSession();
+        ProfileDAO dao = new ProfileDAO(session);
+        long id = dao.getId(name);
+        Profile response = getProfile(id);
+        session.close();
+        return response;
+    }
 }
