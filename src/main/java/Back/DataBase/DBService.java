@@ -88,4 +88,21 @@ public class DBService implements DBServiceInt {
         session.close();
         return response;
     }
+
+    @Override
+    public void delete(String name) {
+        Transaction transaction = null;
+        try(Session session = sessionFactory.openSession()){
+            transaction = session.getTransaction();
+            transaction.begin();
+            ProfileDAO dao = new ProfileDAO(session);
+            dao.DeleteProfile(name);
+            transaction.commit();
+        }
+        catch (Exception e){
+            if(transaction!=null)
+            { transaction.rollback();}
+            e.printStackTrace();
+        }
+    }
 }

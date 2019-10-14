@@ -15,6 +15,8 @@ public class SignInServlet extends HttpServlet {
         String login  = request.getParameter("login");
         String password = request.getParameter("password");
         if (db.isValid(login,password)){
+           /* HttpSession hs = request.getSession(true);
+            hs.setAttribute("logged",true);*/
             response.setContentType("application/json; charset=utf-8");
             response.setStatus(HttpServletResponse.SC_OK);
             response.getWriter().println("Authorized: " + login);

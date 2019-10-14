@@ -8,4 +8,5 @@ public interface DBServiceInt {
     void printConnectInfo();
     boolean isValid(String name, String password);
     Profile getProfileByName(String name);
+    void delete(String name);
 }

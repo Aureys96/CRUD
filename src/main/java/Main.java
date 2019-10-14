@@ -21,7 +21,10 @@ public class Main {
         handlers.setHandlers(new Handler[]{resource_handler, context});
         Server server = new Server(8080);
         server.setHandler(handlers);
+        //db.addProfile("admin","admin","admin");
+      //  db.delete("admin");
         server.start();
         server.join();
+
     }
 }

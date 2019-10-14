@@ -39,5 +39,12 @@ public class ProfileDAO {
         Profile profile = new Profile(name,password,email);
         return (long)session.save(profile);
     }
-
+    public void DeleteProfile(String name) throws HibernateException{
+        long id = getId(name);
+        Profile profile = session.get(Profile.class,id);
+        if (profile!=null){
+            session.delete(profile);
+            System.out.println("Profile deleted");
+        }
+    }
 }
